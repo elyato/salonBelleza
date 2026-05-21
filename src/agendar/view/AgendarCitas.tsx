@@ -11,8 +11,11 @@ import {
   Stepper,
   Typography,
 } from "@mui/material";
-import {Header} from "./components/header/Header";
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Header } from "./components/header/Header";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
+import img1 from "../../assets/imgs/foto1.jpeg";
+import img2 from "../../assets/imgs/foto2.jpeg";
 
 const AgendarCitas = () => {
   const servicios = [
@@ -42,7 +45,7 @@ const AgendarCitas = () => {
     {
       id: 4,
       nombre: "Combo Mani-Pedi",
-      descripcion: "<Manicure y pedicure con gel, el paquete mas popular.",
+      descripcion: "Manicure y pedicure con gel, el paquete mas popular.",
       tiempo: "1 hora y 15 minutos",
       precio: "$45",
     },
@@ -67,10 +70,22 @@ const AgendarCitas = () => {
     "Create an ad group",
     "Create an ad",
   ];
+
+  const galeria = [
+    {
+      id: 1,
+      img: img1,
+    },
+    {
+      id: 2,
+      img: img2,
+    },
+  ];
+
   return (
     <Box>
       <Header />
-      <Box sx={{ marginTop: 10,bgcolor: "#FFF4F2" }}>
+      <Box sx={{ marginTop: 10, bgcolor: "#FFF4F2" }}>
         <Typography variant="h1" align="center" sx={{ marginTop: "32px" }}>
           Elegancia en cada detalle
         </Typography>
@@ -80,13 +95,21 @@ const AgendarCitas = () => {
           exclusivos de manicure, pedicure y disenos personalizados.
         </Typography>
 
-        <Box   sx={{ marginTop: "32px", display: "flex", justifyContent: "center", gap: 2, flexWrap: "wrap" }}>
+        <Box
+          sx={{
+            marginTop: "32px",
+            display: "flex",
+            justifyContent: "center",
+            gap: 2,
+            flexWrap: "wrap",
+          }}
+        >
           <Button
             variant="contained"
             color="secondary"
             fullWidth
-            endIcon={<ArrowForwardIcon fontSize="small"   />}
-            sx={{  bgcolor: "black", p: 2, borderRadius: 5 }}
+            endIcon={<ArrowForwardIcon fontSize="small" />}
+            sx={{ bgcolor: "black", p: 2, borderRadius: 5 }}
           >
             Agendar cita
           </Button>
@@ -94,10 +117,27 @@ const AgendarCitas = () => {
             variant="outlined"
             color="primary"
             fullWidth
-            sx={{  borderRadius: 5,p: 2 }}
+            sx={{ borderRadius: 5, p: 2 }}
           >
             Ver galeria
           </Button>
+          <Box
+            sx={{
+              display: "flex",
+              gap: 2,
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {galeria.map((foto) => (
+              <img
+                src={foto.img}
+                key={foto.id}
+                width={200}
+                style={{ borderRadius: 10 }}
+              />
+            ))}
+          </Box>
         </Box>
       </Box>
       <Box sx={{ bgcolor: "#FFF4F2" }}>
@@ -113,14 +153,32 @@ const AgendarCitas = () => {
         <Grid container spacing={2} sx={{ marginTop: "32px" }}>
           {servicios.map((servicio) => (
             <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-              <Card sx={{ p: 2,display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center",gap: 2 }}>
-                <Box sx={{display:"flex", width:"100%", justifyContent:"space-between"}}>
-
-                <Typography variant="h6">{servicio.nombre}</Typography>
-                                <Typography variant="h6">{servicio.precio}</Typography>
+              <Card
+                sx={{
+                  p: 2,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center",
+                  gap: 2,
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    width: "100%",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Typography variant="h6">{servicio.nombre}</Typography>
+                  <Typography sx={{color:"pink"}} variant="h6">{servicio.precio}</Typography>
                 </Box>
                 <Typography variant="body2">{servicio.descripcion}</Typography>
-                <Chip label={servicio.tiempo} color="primary" sx={{ marginTop: "8px" }} />
+                <Chip
+                  label={servicio.tiempo}
+                  color="primary"
+                  sx={{ marginTop: "8px" }}
+                />
               </Card>
             </Grid>
           ))}
@@ -174,18 +232,18 @@ const AgendarCitas = () => {
           </Stepper>
         </Box>
         <Card>
-            <CardHeader title="Selecciona tu servicio" />
-            <CardContent>
-                <Grid container spacing={2}>
-                    {servicios.map((servicio) => (
-                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={servicio.id}>
-                            <Button variant="outlined" fullWidth>
-                                {servicio.nombre}
-                            </Button>
-                        </Grid>
-                    ))}
+          <CardHeader title="Selecciona tu servicio" />
+          <CardContent>
+            <Grid container spacing={2}>
+              {servicios.map((servicio) => (
+                <Grid size={{ xs: 12, sm: 6, md: 4 }} key={servicio.id}>
+                  <Button variant="outlined" fullWidth>
+                    {servicio.nombre}
+                  </Button>
                 </Grid>
-            </CardContent>
+              ))}
+            </Grid>
+          </CardContent>
         </Card>
       </Box>
     </Box>
