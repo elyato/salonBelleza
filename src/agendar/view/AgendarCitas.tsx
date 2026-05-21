@@ -4,13 +4,15 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Chip,
   Grid,
   Step,
   StepLabel,
   Stepper,
   Typography,
 } from "@mui/material";
-import Header from "./components/header/Header";
+import {Header} from "./components/header/Header";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const AgendarCitas = () => {
   const servicios = [
@@ -20,6 +22,7 @@ const AgendarCitas = () => {
       descripcion:
         "Cuida y embellece tus manos con nuestro servicio de manicure.",
       tiempo: "30 minutos",
+      precio: "$20",
     },
     {
       id: 2,
@@ -27,30 +30,35 @@ const AgendarCitas = () => {
       descripcion:
         "Relaja y rejuvenece tus pies con nuestro servicio de pedicure.",
       tiempo: "45 minutos",
+      precio: "$30",
     },
     {
       id: 3,
       nombre: "Unas Acrilicas",
       descripcion: "Extension y esculpido profesional con diseno incluido.",
       tiempo: "1 hora",
+      precio: "$50",
     },
     {
       id: 4,
       nombre: "Combo Mani-Pedi",
       descripcion: "<Manicure y pedicure con gel, el paquete mas popular.",
       tiempo: "1 hora y 15 minutos",
+      precio: "$45",
     },
     {
       id: 5,
       nombre: "Nail Art",
       descripcion: "Disenos personalizados, decoraciones y piedras.",
       tiempo: "30 minutos adicionales al servicio base",
+      precio: "Desde $10 adicionales",
     },
     {
       id: 6,
       nombre: "Manicure con Gel",
       descripcion: "Durabilidad de hasta 3 semanas con acabado brillante.",
       tiempo: "45 minutos",
+      precio: "$25",
     },
   ];
 
@@ -62,36 +70,37 @@ const AgendarCitas = () => {
   return (
     <Box>
       <Header />
-      <Box>
-        <Typography variant="h4" align="center" sx={{ marginTop: "32px" }}>
+      <Box sx={{ marginTop: 10,bgcolor: "#FFF4F2" }}>
+        <Typography variant="h1" align="center" sx={{ marginTop: "32px" }}>
           Elegancia en cada detalle
         </Typography>
 
-        <Typography variant="h4" align="center" sx={{ marginTop: "32px" }}>
+        <Typography variant="h6" align="center" sx={{ marginTop: "32px" }}>
           Transforma tus manos en obras de arte con nuestros tratamientos
           exclusivos de manicure, pedicure y disenos personalizados.
         </Typography>
 
-        <Box>
+        <Box   sx={{ marginTop: "32px", display: "flex", justifyContent: "center", gap: 2, flexWrap: "wrap" }}>
           <Button
             variant="contained"
             color="secondary"
             fullWidth
-            sx={{ marginTop: "32px" }}
+            endIcon={<ArrowForwardIcon fontSize="small"   />}
+            sx={{  bgcolor: "black", p: 2, borderRadius: 5 }}
           >
             Agendar cita
           </Button>
           <Button
-            variant="contained"
+            variant="outlined"
             color="primary"
             fullWidth
-            sx={{ marginTop: "32px" }}
+            sx={{  borderRadius: 5,p: 2 }}
           >
             Ver galeria
           </Button>
         </Box>
       </Box>
-      <Box>
+      <Box sx={{ bgcolor: "#FFF4F2" }}>
         <Typography variant="h4" align="center" sx={{ marginTop: "32px" }}>
           Nuestros servicios
         </Typography>
@@ -104,10 +113,14 @@ const AgendarCitas = () => {
         <Grid container spacing={2} sx={{ marginTop: "32px" }}>
           {servicios.map((servicio) => (
             <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-              <Card>
+              <Card sx={{ p: 2,display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center",gap: 2 }}>
+                <Box sx={{display:"flex", width:"100%", justifyContent:"space-between"}}>
+
                 <Typography variant="h6">{servicio.nombre}</Typography>
+                                <Typography variant="h6">{servicio.precio}</Typography>
+                </Box>
                 <Typography variant="body2">{servicio.descripcion}</Typography>
-                <Typography variant="caption">{servicio.tiempo}</Typography>
+                <Chip label={servicio.tiempo} color="primary" sx={{ marginTop: "8px" }} />
               </Card>
             </Grid>
           ))}

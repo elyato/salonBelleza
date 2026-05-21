@@ -1,36 +1,31 @@
-import { Box, Button, Typography } from "@mui/material"
-
-const Header = () => {
+import { Box, Button, Typography } from "@mui/material";
+import "./Header.css";
+export const Header = () => {
   return (
-     <Box
-        sx={{
-            bgcolor: "#e5a2ac",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          borderBottom: "1px solid #ccc",
-          padding: "16px",  
-        }}
-      >
-        <Typography variant="h6" align="center">
-          Aleja nails & beauty
+    <Box className="app-header" sx={{ bgcolor: "#FFF4F2",borderBottom: "1px solid #E0E0E0", p: 2, position: "fixed", top: 0, left: 0, right: 0, zIndex: 100 }}>
+      <Typography variant="h6" className="app-header-title">
+        Aleja nails & beauty
+      </Typography>
+      <Box className="app-header-nav">
+        <Typography variant="subtitle1" align="center">
+          Servicios
         </Typography>
-        <Box sx={{ display: "flex", gap: 2 }}>
-          <Typography variant="subtitle1" align="center">
-            Servicios
-          </Typography>
-          <Typography variant="subtitle1" align="center">
-            galeria
-          </Typography>
-          <Typography variant="subtitle1" align="center">
-            Equipo
-          </Typography>
-          <Button variant="contained" color="info" fullWidth size="small"  >
-            Agendar cita
-          </Button>
-        </Box>
+        <Typography variant="subtitle1" align="center">
+          galeria
+        </Typography>
+        <Typography variant="subtitle1" align="center">
+          Equipo
+        </Typography>
+        <Button
+          variant="contained"
+          color="info"
+          sx={{ borderRadius: 5, bgcolor: "black",p:2 }}
+          fullWidth
+          size="small"
+        >
+          Agendar cita
+        </Button>
       </Box>
-  )
-}
-
-export default Header
+    </Box>
+  );
+};
