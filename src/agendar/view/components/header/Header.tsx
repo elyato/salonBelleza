@@ -2,8 +2,8 @@ import { Box, Button, Typography } from "@mui/material";
 import "./Header.css";
 export const Header = () => {
   return (
-    <Box className="app-header" sx={{ bgcolor: "#FFF4F2",borderBottom: "1px solid #E0E0E0", p: 2, position: "fixed", top: 0, left: 0, right: 0, zIndex: 100 }}>
-      <Typography variant="h6" className="app-header-title">
+    <Box className="app-header" sx={{ bgcolor: "#f7f5f1",borderBottom: "1px solid #E0E0E0", p: 2, position: "fixed", top: 0, left: 0, right: 0, zIndex: 100 }}>
+      <Typography variant="h6" className="app-header-title" sx={{fontFamily: "Playfair Display, serif"}}>
         Aleja nails & beauty
       </Typography>
       <Box className="app-header-nav">
