@@ -8,9 +8,9 @@ interface galeriaProps {
   fotos: galeria[];
 }
 
-export const Galeria = ({ fotos }: galeriaProps) => {
+export const Galeria = ({ fotos, }: galeriaProps) => {
   return (
-    <Box sx={{ bgcolor: "#FFF4F2", width: "100%", p: 4, display: "flex",flexDirection:"column", alignItems: "center" }}>
+    <Box id="galeria" sx={{ bgcolor: "#FFF4F2", width: "100%", p: 4, display: "flex",flexDirection:"column", alignItems: "center" }}>
       <Typography
         variant="h2"
         align="center"

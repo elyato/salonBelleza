@@ -12,7 +12,7 @@ export const Citas = ({ servicios }: citasProps) => {
       "Datos",
     ];
   return (
-<Box sx={{ bgcolor: "#f7f5f1" }}>
+<Box sx={{ bgcolor: "#f7f5f1" }} id="Agendar">
         <Typography
           variant="h4"
           align="center"

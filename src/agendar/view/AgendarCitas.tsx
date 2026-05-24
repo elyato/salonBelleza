@@ -15,6 +15,7 @@ import CardServicios from "./components/view/CardServicios";
 import type { servicios } from "./interfaces/servicios";
 import { Citas } from "./citas/Citas";
 import { Galeria } from "./components/galeria/view/Galeria";
+import { useRef } from "react";
 const AgendarCitas = () => {
   const servicios:servicios[] = [
     {
@@ -89,6 +90,15 @@ const AgendarCitas = () => {
     },
   ];
 
+const scrollToSection = (id: string) => {
+  const element = document.getElementById(id);
+
+  element?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+};
+
   return (
     <Box
       sx={{
@@ -98,7 +108,7 @@ const AgendarCitas = () => {
         bgcolor: "#f7f5f1",
       }}
     >
-      <Header />
+      <Header scrollToSection={scrollToSection} />
       <Box sx={{ marginTop: 10, bgcolor: "#FFF4F2", width: "40%", p: 4 }}>
         <Typography
           variant="h1"
@@ -138,6 +148,7 @@ const AgendarCitas = () => {
           >
             <Button
               variant="contained"
+              onClick={()=> scrollToSection("Agendar")}
               color="secondary"
               fullWidth
               endIcon={<ArrowForwardIcon fontSize="small" />}
@@ -148,6 +159,7 @@ const AgendarCitas = () => {
             <Button
               variant="outlined"
               fullWidth
+              onClick={() => scrollToSection("galeria")}
               sx={{
                 borderRadius: 5,
                 p: 2,
@@ -177,7 +189,7 @@ const AgendarCitas = () => {
         </Box>
       </Box>
 <CardServicios servicios={servicios} />
-    <Galeria fotos={galeria} />
+    <Galeria fotos={galeria}  />
 
       <Box sx={{ bgcolor: "#fdfcf9",width: "100%", p: 4 }}>
         <Typography
