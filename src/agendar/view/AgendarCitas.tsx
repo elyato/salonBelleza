@@ -14,6 +14,7 @@ import img3 from "../../assets/imgs/foto4.jpeg";
 import CardServicios from "./components/view/CardServicios";
 import type { servicios } from "./interfaces/servicios";
 import { Citas } from "./citas/Citas";
+import { Galeria } from "./components/galeria/view/Galeria";
 const AgendarCitas = () => {
   const servicios:servicios[] = [
     {
@@ -176,26 +177,9 @@ const AgendarCitas = () => {
         </Box>
       </Box>
 <CardServicios servicios={servicios} />
-      <Box>
-        <Typography
-          variant="h4"
-          align="center"
-          sx={{ marginTop: "32px", fontFamily: "Playfair Display, serif" }}
-        >
-          Nuestra galeria
-        </Typography>
-        <Typography variant="h4" align="center" sx={{ marginTop: "32px" }}>
-          Inspirate con nuestros trabajos mas recientes y encuentra tu proximo
-          estilo.
-        </Typography>
-        <Grid container spacing={2} sx={{ marginTop: "32px" }}>
-          <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-            <Card>fotos</Card>
-          </Grid>
-        </Grid>
-      </Box>
+    <Galeria fotos={galeria} />
 
-      <Box sx={{ bgcolor: "#fdfcf9" }}>
+      <Box sx={{ bgcolor: "#fdfcf9",width: "100%", p: 4 }}>
         <Typography
           variant="h4"
           align="center"

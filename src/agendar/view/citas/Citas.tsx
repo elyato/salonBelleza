@@ -6,9 +6,10 @@ interface citasProps {
 }
 export const Citas = ({ servicios }: citasProps) => {
    const steps = [
-      "Select master blaster campaign settings",
-      "Create an ad group",
-      "Create an ad",
+      "Servicio",
+      "Estilista",
+      "Fecha y hora",
+      "Datos",
     ];
   return (
 <Box sx={{ bgcolor: "#f7f5f1" }}>
@@ -46,7 +47,7 @@ export const Citas = ({ servicios }: citasProps) => {
             </Box>
             <Grid container spacing={2}>
               {servicios.map((servicio) => (
-                <Grid size={{ xs: 12, sm: 6, md: 4 }} key={servicio.id}>
+                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 6 }} key={servicio.id}>
                   <Box sx={{ border: "1px grey solid" ,display:"flex",justifyContent:"space-between",  alignItems:"center", p:2, borderRadius: 2 }}>
                     <Typography
                       variant="h6"

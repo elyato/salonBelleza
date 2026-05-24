@@ -28,7 +28,7 @@ const CardServicios = ({servicios}: ServicioProps) => {
             container
             spacing={2}
             size={{ xs: 12, sm: 6, md: 8, lg: 8 }}
-            sx={{ display: "flex", justifyContent: "center" }}
+            sx={{ display: "flex", justifyContent: "center",p:2 }}
           >
             {servicios.map((servicio) => (
               <Grid
@@ -44,8 +44,8 @@ const CardServicios = ({servicios}: ServicioProps) => {
                     alignItems: "center",
                     textAlign: "center",
                     borderRadius: 4,
-                    bgcolor: "transparent",
                     gap: 2,
+                                          "&:hover": { boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)" },
                   }}
                 >
                   <Box
@@ -55,11 +55,12 @@ const CardServicios = ({servicios}: ServicioProps) => {
                       alignItems: "center",
                       width: "100%",
                       justifyContent: "space-between",
+
                     }}
                   >
                     <Typography
-                      variant="h6"
-                      sx={{ fontFamily: "Playfair Display, serif" }}
+                      variant="body1"
+                      sx={{ fontFamily: "Playfair Display, serif", fontSize: "18px" }}
                     >
                       {servicio.nombre}
                     </Typography>
