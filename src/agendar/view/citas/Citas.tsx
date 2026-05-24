@@ -1,6 +1,11 @@
-import { Box, Button, Card, CardActions, CardContent, CardHeader, Grid, Step, StepLabel, Stepper, Typography } from "@mui/material"
+import { Box, Button, Card, CardActions, CardContent, CardHeader, Grid, Step, StepLabel, Stepper, Typography, TextField } from "@mui/material"
 import type { manicuristas, servicios } from "../interfaces/servicios";
 import { useState } from "react";
+
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+
 
 interface citasProps {
   servicios: servicios[];
@@ -17,6 +22,45 @@ export const Citas = ({ servicios, selectedService, handleSelectService, manicur
     ];
 
     const [step, setStep] = useState(0);
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+    // selectedTime stores 'HH:mm'
+    const [selectedTime, setSelectedTime] = useState<string | null>(null);
+    // Datos quemados: citas ya agendadas (ISO: YYYY-MM-DDTHH:mm:SS)
+    const [bookedAppointments, setBookedAppointments] = useState<string[]>([
+      '2026-05-24T09:00:00',
+      '2026-05-24T10:30:00',
+      '2026-05-25T13:00:00',
+    ]);
+
+    // Genera ranuras cada 30 minutos entre 09:00 y 17:00
+    const generateSlots = () => {
+      const slots: string[] = [];
+      for (let h = 9; h <= 16; h++) {
+        slots.push(`${h.toString().padStart(2, '0')}:00`);
+        slots.push(`${h.toString().padStart(2, '0')}:30`);
+      }
+      // incluir 17:00 como última opción
+      slots.push('17:00');
+      return slots;
+    };
+
+    const formatDate = (d: Date) => {
+      const y = d.getFullYear();
+      const m = (d.getMonth() + 1).toString().padStart(2, '0');
+      const day = d.getDate().toString().padStart(2, '0');
+      return `${y}-${m}-${day}`;
+    };
+
+    const handleSelectSlot = (slot: string) => {
+      if (!selectedDate) return;
+      const dateStr = formatDate(selectedDate);
+      const iso = `${dateStr}T${slot}:00`;
+      // Si ya está reservado, no hacer nada
+      if (bookedAppointments.includes(iso)) return;
+      // Seleccionar y marcar como reservado (simula agendado)
+      setSelectedTime(slot);
+      setBookedAppointments((prev) => [...prev, iso]);
+    };
 
     const handleNext = () => {
       setStep((prevStep) => prevStep + 1);
@@ -133,9 +177,70 @@ export const Citas = ({ servicios, selectedService, handleSelectService, manicur
       </Typography>
     )
   }
+
+ 
 </Box>
               )
             }
+            {
+               step === 2 && (
+      <Grid container spacing={2}>
+        <Grid >
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateCalendar
+              onChange={(newValue: any) => { setSelectedDate(newValue ? newValue.toDate() : null); setSelectedTime(null); }}
+            />
+          </LocalizationProvider>
+        </Grid>
+
+        <Grid >
+          {selectedDate ? (
+            <>
+
+              <Grid container spacing={1} >
+                {generateSlots().map((slot) => {
+                  const dateStr = formatDate(selectedDate);
+                  const slotIso = `${dateStr}T${slot}:00`;
+                  const isBooked = bookedAppointments.includes(slotIso);
+                  const isSelected = selectedTime === slot && !isBooked;
+                  return (
+                    <Grid  key={slot} size={{ xs: 3, sm: 4, md: 3 }} sx={{ display: "flex", justifyContent: "center" }}>
+                      <Button
+                        variant={isSelected ? "contained" : "outlined"}
+                        disabled={isBooked}
+                        onClick={() => handleSelectSlot(slot)}
+                      >
+                        {slot}
+                      </Button>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+
+              {selectedTime && (
+                <Typography align="center" sx={{ mt: 1 }}>
+                  Hora seleccionada: {selectedTime}
+                </Typography>
+              )}
+            </>
+          ) : (
+            <Typography align="center">Selecciona una fecha para ver horarios disponibles.</Typography>
+          )}
+        </Grid>
+      </Grid>
+  )}
+  {
+    step === 3 && (
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+        <Typography variant="h6" align="center">
+          Ingresa tus datos para confirmar tu cita
+        </Typography>
+        <TextField label="Nombre completo" fullWidth />
+        <TextField label="Número de teléfono" fullWidth />
+      </Box>
+    )
+  }
+             
           </CardContent>
           <CardActions
             sx={{
@@ -160,13 +265,19 @@ export const Citas = ({ servicios, selectedService, handleSelectService, manicur
               variant="contained"
               sx={{ borderRadius: 2 }}
               color="primary"
+              disabled={(step === 0 && selectedService === 0) || (step === 1 && selectedService === 0) || (step === 2 && !selectedTime)}
               fullWidth
               onClick={handleNext}
             >
-              Continuar
+             {
+               
+                step === steps.length - 1 ? "Confirmar Cita" : "Siguiente"
+            } 
             </Button>
           </CardActions>
         </Card>
+
+       
       </Box>
   )
 }

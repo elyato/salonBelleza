@@ -17,7 +17,10 @@
     "@fontsource/roboto": "^5.2.10",
     "@mui/icons-material": "^9.0.1",
     "@mui/material": "^9.0.1",
+    "@mui/x-date-pickers": "^9.3.0",
     "@sinco/react": "^1.2.9-rc.1",
+    "date-fns": "^4.3.0",
+    "dayjs": "^1.11.20",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },

@@ -11,6 +11,7 @@ import { Citas } from "./citas/Citas";
 import { Galeria } from "./components/galeria/view/Galeria";
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import { useState } from "react";
+import { Footer } from "./components/footer/view/Footer";
 const AgendarCitas = () => {
   const servicios: servicios[] = [
     {
@@ -234,6 +235,7 @@ const AgendarCitas = () => {
         </Grid>
       </Box>
       <Citas servicios={servicios} selectedService={selectedService} handleSelectService={handleSelectService} manicuristas={manicuristas} />
+      <Footer />
       <Button sx={{ zIndex: 1, position: "fixed", bottom: 16, right: 16, bgcolor: "#07df19", color: "white", p: 2, borderRadius: "300px" }} href="https://wa.me/3137610049" target="_blank" startIcon={<LocalPhoneIcon/>}>
         WhatsApp
       </Button>
