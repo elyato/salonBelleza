@@ -5,3 +5,10 @@ export interface servicios {
     descripcion: string;
     tiempo: string;
 }
+
+export interface manicuristas {
+    id: number;
+    nombre: string;
+    especialidad: string;
+    foto: string;
+}

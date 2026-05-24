@@ -1,10 +1,4 @@
-import {
-  Box,
-  Button,
-  Card,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Card, Grid, Typography } from "@mui/material";
 import { Header } from "./components/header/Header";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
@@ -15,9 +9,10 @@ import CardServicios from "./components/view/CardServicios";
 import type { servicios } from "./interfaces/servicios";
 import { Citas } from "./citas/Citas";
 import { Galeria } from "./components/galeria/view/Galeria";
-import { useRef } from "react";
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import { useState } from "react";
 const AgendarCitas = () => {
-  const servicios:servicios[] = [
+  const servicios: servicios[] = [
     {
       id: 1,
       nombre: "Manicure",
@@ -64,8 +59,6 @@ const AgendarCitas = () => {
     },
   ];
 
- 
-
   const manicuristas = [
     {
       id: 1,
@@ -90,14 +83,21 @@ const AgendarCitas = () => {
     },
   ];
 
-const scrollToSection = (id: string) => {
-  const element = document.getElementById(id);
+  const [selectedService, setSelectedService] = useState(0);
 
-  element?.scrollIntoView({
-    behavior: "smooth",
-    block: "start",
-  });
-};
+
+  const handleSelectService = (id: number) => {
+    setSelectedService(id);
+  }
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+
+    element?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
 
   return (
     <Box
@@ -148,7 +148,7 @@ const scrollToSection = (id: string) => {
           >
             <Button
               variant="contained"
-              onClick={()=> scrollToSection("Agendar")}
+              onClick={() => scrollToSection("Agendar")}
               color="secondary"
               fullWidth
               endIcon={<ArrowForwardIcon fontSize="small" />}
@@ -188,10 +188,10 @@ const scrollToSection = (id: string) => {
           </Grid>
         </Box>
       </Box>
-<CardServicios servicios={servicios} />
-    <Galeria fotos={galeria}  />
+      <CardServicios servicios={servicios} />
+      <Galeria fotos={galeria} />
 
-      <Box sx={{ bgcolor: "#fdfcf9",width: "100%", p: 4 }}>
+      <Box id="Equipo" sx={{ bgcolor: "#fdfcf9", width: "100%", p: 4 }}>
         <Typography
           variant="h4"
           align="center"
@@ -208,6 +208,7 @@ const scrollToSection = (id: string) => {
           <Grid size={{ xs: 12, sm: 6, md: 4 }}>
             {manicuristas.map((manicurista) => (
               <Card
+
                 key={manicurista.id}
                 sx={{
                   display: "flex",
@@ -215,6 +216,7 @@ const scrollToSection = (id: string) => {
                   alignItems: "center",
                   p: 2,
                   gap: 2,
+
                 }}
               >
                 <img
@@ -231,7 +233,10 @@ const scrollToSection = (id: string) => {
           </Grid>
         </Grid>
       </Box>
-      <Citas servicios={servicios} />
+      <Citas servicios={servicios} selectedService={selectedService} handleSelectService={handleSelectService} manicuristas={manicuristas} />
+      <Button sx={{ zIndex: 1, position: "fixed", bottom: 16, right: 16, bgcolor: "#07df19", color: "white", p: 2, borderRadius: "300px" }} href="https://wa.me/3137610049" target="_blank" startIcon={<LocalPhoneIcon/>}>
+        WhatsApp
+      </Button>
     </Box>
   );
 };
