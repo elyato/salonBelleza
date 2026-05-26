@@ -1,10 +1,10 @@
-import { Box, Button, Card, CardActions, CardContent, CardHeader, Grid, Step, StepLabel, Stepper, Typography, TextField } from "@mui/material"
+import { Box, Button, Card, CardActions, CardContent, CardHeader, Grid, Step, StepLabel, Stepper, Typography, TextField, Modal, Divider, IconButton } from "@mui/material"
 import type { manicuristas, servicios } from "../interfaces/servicios";
-import { useState } from "react";
 
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+import { useCitas } from "./hook/useCitas";
 
 
 interface citasProps {
@@ -14,57 +14,10 @@ interface citasProps {
   manicuristas?: manicuristas[];
 }
 export const Citas = ({ servicios, selectedService, handleSelectService, manicuristas }: citasProps) => {
-   const steps = [
-      "Servicio",
-      "Estilista",
-      "Fecha y hora",
-      "Datos",
-    ];
 
-    const [step, setStep] = useState(0);
-    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-    // selectedTime stores 'HH:mm'
-    const [selectedTime, setSelectedTime] = useState<string | null>(null);
-    // Datos quemados: citas ya agendadas (ISO: YYYY-MM-DDTHH:mm:SS)
-    const [bookedAppointments, setBookedAppointments] = useState<string[]>([
-      '2026-05-24T09:00:00',
-      '2026-05-24T10:30:00',
-      '2026-05-25T13:00:00',
-    ]);
-
-    // Genera ranuras cada 30 minutos entre 09:00 y 17:00
-    const generateSlots = () => {
-      const slots: string[] = [];
-      for (let h = 9; h <= 16; h++) {
-        slots.push(`${h.toString().padStart(2, '0')}:00`);
-        slots.push(`${h.toString().padStart(2, '0')}:30`);
-      }
-      // incluir 17:00 como última opción
-      slots.push('17:00');
-      return slots;
-    };
-
-    const formatDate = (d: Date) => {
-      const y = d.getFullYear();
-      const m = (d.getMonth() + 1).toString().padStart(2, '0');
-      const day = d.getDate().toString().padStart(2, '0');
-      return `${y}-${m}-${day}`;
-    };
-
-    const handleSelectSlot = (slot: string) => {
-      if (!selectedDate) return;
-      const dateStr = formatDate(selectedDate);
-      const iso = `${dateStr}T${slot}:00`;
-      // Si ya está reservado, no hacer nada
-      if (bookedAppointments.includes(iso)) return;
-      // Seleccionar y marcar como reservado (simula agendado)
-      setSelectedTime(slot);
-      setBookedAppointments((prev) => [...prev, iso]);
-    };
-
-    const handleNext = () => {
-      setStep((prevStep) => prevStep + 1);
-    };
+  const {bookedAppointments,clientName,clientPhone ,generateSlots ,handleNext,handleSelectSlot,selectedDate,
+    selectedManicuristaId,selectedTime,serviceName,stylistName,step,selectedServiceId,setClientName,setClientPhone,setSelectedDate,setSelectedManicuristaId,setSelectedServiceId,setSelectedTime,steps,formatDate,setStep} = useCitas({ selectedService, manicuristas, servicios });
+   
   return (
 <Box sx={{ bgcolor: "#f7f5f1" }} id="Agendar">
         <Typography
@@ -112,9 +65,9 @@ export const Citas = ({ servicios, selectedService, handleSelectService, manicur
                       alignItems: "center",
                       p: 1.5,
                       borderRadius: 2,
-                      bgcolor: selectedService === servicio.id ? "#e0e0e0" : "white",
+                      bgcolor: selectedServiceId === servicio.id ? "#e0e0e0" : "white",
                     }}
-                    onClick={() => handleSelectService(servicio.id)}
+                                          onClick={() => { handleSelectService(servicio.id); setSelectedServiceId(servicio.id); }}
                     >
                     <Typography
                     variant="h6"
@@ -153,9 +106,9 @@ export const Citas = ({ servicios, selectedService, handleSelectService, manicur
                   alignItems: "center",
                   p: 2,
                   gap: 2,
-                  bgcolor: selectedService === manicurista.id ? "#e0e0e0" : "white",
+                  bgcolor: selectedManicuristaId === manicurista.id ? "#e0e0e0" : "white",
               }}
-              onClick={() => handleSelectService(manicurista.id)}
+                                onClick={() => { handleSelectService(manicurista.id); setSelectedManicuristaId(manicurista.id); }}
             >
               <img
                 src={manicurista.foto}
@@ -235,12 +188,34 @@ export const Citas = ({ servicios, selectedService, handleSelectService, manicur
         <Typography variant="h6" align="center">
           Ingresa tus datos para confirmar tu cita
         </Typography>
-        <TextField label="Nombre completo" fullWidth />
-        <TextField label="Número de teléfono" fullWidth />
+        <TextField label="Nombre completo" fullWidth value={clientName} onChange={(e) => setClientName(e.target.value)} />
+        <TextField label="Número de teléfono" fullWidth value={clientPhone} onChange={(e) => setClientPhone(e.target.value)} />
       </Box>
     )
   }
-             
+  {/* Modal de confirmación cuando step === 4 */}
+  {
+    step === 4 && (
+      <Box sx={{  p: 3, borderRadius: 2, width: { xs: '90%', sm: 480 } }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Typography id="appointment-modal-title" variant="h6">Cita Agendada</Typography>
+        
+      </Box>
+      <Divider sx={{ my: 1 }} />
+      <Typography>Tu cita ha sido reservada exitosamente. Te enviaremos un recordatorio.</Typography>
+      <Box sx={{ mt: 2 }}>
+        <Typography><strong>Servicio:</strong> {serviceName || 'Combo Mani-Pedi'}</Typography>
+        <Typography><strong>Estilista:</strong> {stylistName || 'Laura Rodriguez'}</Typography>
+        <Typography><strong>Fecha:</strong> {selectedDate ? selectedDate.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : 'lunes, 25 de mayo de 2026'}</Typography>
+        <Typography><strong>Hora:</strong> {selectedTime ?? '18:00'}</Typography>
+        <Typography><strong>Cliente:</strong> {clientName || 'das'}</Typography>
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
+        <Button variant="contained" onClick={() => { setStep(0); setSelectedDate(null); setSelectedTime(null); }}>Agendar otra cita</Button>
+      </Box>
+    </Box>
+    )
+    }
           </CardContent>
           <CardActions
             sx={{
@@ -249,7 +224,24 @@ export const Citas = ({ servicios, selectedService, handleSelectService, manicur
               p: 2,
               borderTop: "1px solid #E0E0E0",
             }}
-          >
+          >{
+            step === 4 ? (
+              <Button
+                variant="contained"
+                color="primary"
+                fullWidth
+                onClick={() => {
+                  // Reiniciar todo para agendar otra cita
+                  setStep(0);
+                  handleSelectService(0);
+                  setSelectedDate(null);
+                  setSelectedTime(null);
+                }}
+              >
+                Agendar Otra Cita
+              </Button>
+            ) : (
+              <>
             <Button
               variant="outlined"
               sx={{ borderRadius: 2 }}
@@ -274,6 +266,9 @@ export const Citas = ({ servicios, selectedService, handleSelectService, manicur
                 step === steps.length - 1 ? "Confirmar Cita" : "Siguiente"
             } 
             </Button>
+              </>
+            )}
+            
           </CardActions>
         </Card>
 
