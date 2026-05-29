@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modules\Employees\Features\CreateEmployes\" />
     <Folder Include="Shared\" />
   </ItemGroup>
 
