@@ -14,12 +14,20 @@ namespace Belleza.Infrastructure
 
         public async Task AddAsync(Employee employee, CancellationToken ct = default)
         {
+            if (employee == null)
+            {
+                throw new ArgumentNullException(nameof(employee));
+            }
             _db.Employees.Add(employee);
             await _db.SaveChangesAsync(ct);
         }
 
         public Task<Employee?> GetByIdAsync(int id, CancellationToken ct = default)
         {
+            if (id == 0) { 
+            
+                throw new ArgumentNullException(nameof(id));
+            }
             return _db.Employees.FirstOrDefaultAsync(e => e.Id == id, ct);
         }
     }
