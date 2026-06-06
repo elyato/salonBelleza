@@ -1,6 +1,7 @@
-import { Box, Button, Card, Grid, Typography } from "@mui/material";
+import { Box, Button, Card, Grid, Typography, useTheme } from "@mui/material";
 import { Header } from "./components/header/Header";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useQuery } from '@tanstack/react-query';
 
 import img1 from "../../assets/imgs/foto1.jpeg";
 import img2 from "../../assets/imgs/foto2.jpeg";
@@ -10,8 +11,15 @@ import type { servicios } from "./interfaces/servicios";
 import { Citas } from "./citas/Citas";
 import { Galeria } from "./components/galeria/view/Galeria";
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Footer } from "./components/footer/view/Footer";
+
+interface Employee {
+  id: number;
+  name: string;
+  lastName: string;
+  skills?: string;
+}
 const AgendarCitas = () => {
   const servicios: servicios[] = [
     {
@@ -60,14 +68,31 @@ const AgendarCitas = () => {
     },
   ];
 
-  const manicuristas = [
-    {
-      id: 1,
-      nombre: "Alejandra",
-      especialidad: "Manicure y Nail Art",
-      foto: "https://randomuser.me/api/portraits/women/44.jpg",
+  
+
+
+  const { data: employees, isLoading: employeesLoading, error: employeesError } = useQuery<Employee[], Error>({
+    queryKey: ['employees'],
+    queryFn: async () => {
+      const res = await fetch('/api/Employees');
+      if (!res.ok) throw new Error('Failed fetching employees');
+      return res.json() as Promise<Employee[]>;
     },
-  ];
+  });
+
+  const [manicuristas, setManicuristas] = useState<Employee[]>([]);
+
+  useEffect(() => {
+    if (employees) {
+      const manicuristasData = employees.map(emp => ({
+        id: emp.id,
+        nombre: `${emp.name} ${emp.lastName}`,
+        especialidad: emp.skills || "Especialista en uñas",
+        foto: `https://randomuser.me/api/portraits/women/${emp.id + 10}.jpg`, // Genera una foto aleatoria basada en el ID
+      }));
+      setManicuristas(manicuristasData);
+    }
+  }, [employees]);
 
   const galeria = [
     {
@@ -91,6 +116,9 @@ const AgendarCitas = () => {
     setSelectedService(id);
   }
 
+  console.log("Manicuristas:", manicuristas);
+  const isSmall = useTheme().breakpoints.down('sm');
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
 
@@ -110,7 +138,7 @@ const AgendarCitas = () => {
       }}
     >
       <Header scrollToSection={scrollToSection} />
-      <Box sx={{ marginTop: 10, bgcolor: "#FFF4F2", width: "40%", p: 4 }}>
+      <Box sx={{ marginTop: 10, bgcolor: "#FFF4F2", width: isSmall ? "100%" : "40%", p: 4 }}>
         <Typography
           variant="h1"
           align="center"
@@ -207,9 +235,16 @@ const AgendarCitas = () => {
 
         <Grid container spacing={2} sx={{ marginTop: "32px" }}>
           <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+            {
+              employeesLoading ? (
+                <Typography align="center">Cargando manicuristas...</Typography>
+              ) : employeesError ? (
+                <Typography align="center" color="error">Error cargando manicuristas</Typography>
+              ) : (
+                <>
             {manicuristas.map((manicurista) => (
               <Card
-
+              
                 key={manicurista.id}
                 sx={{
                   display: "flex",
@@ -217,7 +252,7 @@ const AgendarCitas = () => {
                   alignItems: "center",
                   p: 2,
                   gap: 2,
-
+                  
                 }}
               >
                 <img
@@ -225,12 +260,16 @@ const AgendarCitas = () => {
                   width={150}
                   style={{ borderRadius: "50%" }}
                 />
-                <Typography variant="h6">{manicurista.nombre}</Typography>
+                <Typography variant="h6">{manicurista.nombre} </Typography>
                 <Typography variant="body2">
-                  {manicurista.especialidad}
+                  {manicurista.especialidad || "Especialista en uñas"}
                 </Typography>
               </Card>
             ))}
+            </>
+          )
+        }
+            
           </Grid>
         </Grid>
       </Box>

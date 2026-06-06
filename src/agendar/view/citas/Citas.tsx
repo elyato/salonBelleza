@@ -77,8 +77,9 @@ export const Citas = ({ servicios, selectedService, handleSelectService, manicur
                     {servicio.nombre}
                     </Typography>
                     <Typography
+                    variant="subtitle1"
                     align="center"
-                    sx={{ marginBottom: "8px",color: "#ffb0d8", fontWeight: "bold" }}
+                    sx={{ marginBottom: "8px",color: "#e5a2ac",  }}
                     >
                     {servicio.precio}
                     </Typography>
