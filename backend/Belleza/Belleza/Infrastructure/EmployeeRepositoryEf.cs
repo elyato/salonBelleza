@@ -28,7 +28,25 @@ namespace Belleza.Infrastructure
             
                 throw new ArgumentNullException(nameof(id));
             }
+
+            var employee = _db.Employees.FirstOrDefault(e => e.Id == id);
+            if (employee == null)
+            {
+                throw new Exception("No existe este empleado ");
+            }
+
+
             return _db.Employees.FirstOrDefaultAsync(e => e.Id == id, ct);
+        }
+
+        public  Task<List<Employee>> GetEmployees()
+        {
+            if(_db.Employees == null )
+            {
+                throw new Exception("No existen empleados");
+            }  
+
+            return _db.Employees.ToListAsync();
         }
     }
 }
