@@ -8,5 +8,6 @@ namespace Belleza.Domain.Interfaces
     {
         Task AddAsync(Employee employee, CancellationToken ct = default);
         Task<Employee?> GetByIdAsync(int id, CancellationToken ct = default);
+        Task<List<Employee>> GetEmployees();
     }
 }

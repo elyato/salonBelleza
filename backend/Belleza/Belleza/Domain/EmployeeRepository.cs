@@ -21,5 +21,9 @@ namespace Belleza.Domain
             _store.TryGetValue(id, out var employee);
             return Task.FromResult(employee);
         }
+        public Task<List<Employee>> GetEmployees()
+        {
+            return Task.FromResult(_store.Values.ToList());
+        }
     }
 }

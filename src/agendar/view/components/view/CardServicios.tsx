@@ -5,7 +5,7 @@ interface ServicioProps {
  }
 const CardServicios = ({servicios}: ServicioProps) => {
   return (
-      <Box sx={{ bgcolor: "#fdfcf9" }}>
+      <Box sx={{ bgcolor: "#fdfcf9",width: "100%", p: 4 }}>
         <Typography
           variant="h2"
           align="center"
@@ -64,7 +64,7 @@ const CardServicios = ({servicios}: ServicioProps) => {
                     >
                       {servicio.nombre}
                     </Typography>
-                    <Typography sx={{ color: "#ffb0d8" }} variant="h6">
+                    <Typography sx={{ color: "#e5a2ac" }} variant="h6">
                       {servicio.precio}
                     </Typography>
                   </Box>

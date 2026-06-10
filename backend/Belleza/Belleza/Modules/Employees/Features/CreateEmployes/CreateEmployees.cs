@@ -1,4 +1,5 @@
-﻿using Belleza.Domain.Interfaces;
+﻿using Belleza.Domain.Entities;
+using Belleza.Domain.Interfaces;
 
 namespace Belleza.Modules.Employees.Features.CreateEmployes
 {
@@ -12,9 +13,9 @@ namespace Belleza.Modules.Employees.Features.CreateEmployes
             _repository = repository;
         }
 
-        public async System.Threading.Tasks.Task<Belleza.Domain.Entities.Employee> HandleEmployee(int employeeId, string name)
+        public async System.Threading.Tasks.Task<Employee> HandleEmployee(int employeeId, string name)
         {
-            var employee = new Belleza.Domain.Entities.Employee
+            var employee = new Employee
             {
                 Id = employeeId,
                 Name = name

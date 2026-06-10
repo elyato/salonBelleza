@@ -8,5 +8,7 @@ namespace Belleza.Infrastructure
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Employee> Employees { get; set; } = null!;
+        public DbSet<Quotes> Quotes { get; set; } = null!;
+        public DbSet<Services> Services { get; set; }
     }
 }

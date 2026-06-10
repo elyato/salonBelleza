@@ -32,6 +32,14 @@ namespace Belleza.Controllers
             var e = await _repo.GetByIdAsync(id, default);
             return e is null ? NotFound() : Ok(e);
         }
+        [HttpGet]
+        public Task<List<Employee>> GetEmployees()
+        {
+            var employees = _repo.GetEmployees();
+
+            return employees;
+            
+        }
     }
 
     public class CreateEmployeeDto
