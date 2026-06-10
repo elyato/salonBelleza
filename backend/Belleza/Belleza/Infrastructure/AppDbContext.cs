@@ -9,5 +9,6 @@ namespace Belleza.Infrastructure
 
         public DbSet<Employee> Employees { get; set; } = null!;
         public DbSet<Quotes> Quotes { get; set; } = null!;
+        public DbSet<Services> Services { get; set; }
     }
 }

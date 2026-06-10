@@ -1,5 +1,5 @@
-import { Box, Button, Card, CardActions, CardContent, CardHeader, Grid, Step, StepLabel, Stepper, Typography, TextField, Modal, Divider, IconButton } from "@mui/material"
-import type { manicuristas, servicios } from "../interfaces/servicios";
+import { Box, Button, Card, CardActions, CardContent, CardHeader, Grid, Step, StepLabel, Stepper, Typography, TextField,  Divider,  } from "@mui/material"
+import type {  Employee, servicios } from "../interfaces/servicios";
 
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -11,7 +11,7 @@ interface citasProps {
   servicios: servicios[];
   selectedService: number;
   handleSelectService: (id: number) => void;
-  manicuristas?: manicuristas[];
+  manicuristas?: Employee[];
 }
 export const Citas = ({ servicios, selectedService, handleSelectService, manicuristas }: citasProps) => {
 
@@ -113,13 +113,13 @@ export const Citas = ({ servicios, selectedService, handleSelectService, manicur
             >
               <img
                 src={manicurista.foto}
-                alt={manicurista.nombre}
+                alt={manicurista.name}
                 width={150}
                 style={{ borderRadius: "50%" }}
               />
-              <Typography variant="h6">{manicurista.nombre}</Typography>
+              <Typography variant="h6">{manicurista.name}</Typography>
               <Typography variant="body2">
-                {manicurista.especialidad}
+                {manicurista.skills || "Especialista en uñas"}
               </Typography>
             </Card>
           </Grid>

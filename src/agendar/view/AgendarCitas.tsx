@@ -7,19 +7,14 @@ import img1 from "../../assets/imgs/foto1.jpeg";
 import img2 from "../../assets/imgs/foto2.jpeg";
 import img3 from "../../assets/imgs/foto4.jpeg";
 import CardServicios from "./components/view/CardServicios";
-import type { servicios } from "./interfaces/servicios";
+import type { Employee, servicios } from "./interfaces/servicios";
 import { Citas } from "./citas/Citas";
 import { Galeria } from "./components/galeria/view/Galeria";
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import { useState, useEffect } from "react";
 import { Footer } from "./components/footer/view/Footer";
 
-interface Employee {
-  id: number;
-  name: string;
-  lastName: string;
-  skills?: string;
-}
+
 const AgendarCitas = () => {
   const servicios: servicios[] = [
     {
@@ -84,13 +79,7 @@ const AgendarCitas = () => {
 
   useEffect(() => {
     if (employees) {
-      const manicuristasData = employees.map(emp => ({
-        id: emp.id,
-        nombre: `${emp.name} ${emp.lastName}`,
-        especialidad: emp.skills || "Especialista en uñas",
-        foto: `https://randomuser.me/api/portraits/women/${emp.id + 10}.jpg`, // Genera una foto aleatoria basada en el ID
-      }));
-      setManicuristas(manicuristasData);
+      setManicuristas(employees);
     }
   }, [employees]);
 
@@ -116,7 +105,6 @@ const AgendarCitas = () => {
     setSelectedService(id);
   }
 
-  console.log("Manicuristas:", manicuristas);
   const isSmall = useTheme().breakpoints.down('sm');
 
   const scrollToSection = (id: string) => {
@@ -260,9 +248,9 @@ const AgendarCitas = () => {
                   width={150}
                   style={{ borderRadius: "50%" }}
                 />
-                <Typography variant="h6">{manicurista.nombre} </Typography>
+                <Typography variant="h6">{manicurista.name} </Typography>
                 <Typography variant="body2">
-                  {manicurista.especialidad || "Especialista en uñas"}
+                  {manicurista.skills || "Especialista en uñas"}
                 </Typography>
               </Card>
             ))}
