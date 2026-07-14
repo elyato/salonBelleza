@@ -25,7 +25,7 @@ export const Header = ({ scrollToSection }: headerProps) => {
             <MenuIcon />
           </IconButton>
           <Menu anchorEl={anchorEl} open={open} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
-            <MenuItem onClick={() => { handleClose(); /* no scroll id for Servicios */ }}>{'Servicios'}</MenuItem>
+            <MenuItem onClick={() => { handleClose(); scrollToSection('servicios'); }}>{'Servicios'}</MenuItem>
             <MenuItem onClick={() => { handleClose(); scrollToSection('galeria'); }}>Galeria</MenuItem>
             <MenuItem onClick={() => { handleClose(); scrollToSection('Equipo'); }}>Equipo</MenuItem>
             <MenuItem onClick={() => { handleClose(); scrollToSection('Agendar'); }}>

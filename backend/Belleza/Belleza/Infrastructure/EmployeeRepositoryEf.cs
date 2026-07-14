@@ -22,21 +22,15 @@ namespace Belleza.Infrastructure
             await _db.SaveChangesAsync(ct);
         }
 
-        public Task<Employee?> GetByIdAsync(int id, CancellationToken ct = default)
+        public async Task<Employee?> GetByIdAsync(int id, CancellationToken ct = default)
         {
-            if (id == 0) { 
-            
-                throw new ArgumentNullException(nameof(id));
-            }
-
-            var employee = _db.Employees.FirstOrDefault(e => e.Id == id);
-            if (employee == null)
+            if (id == 0)
             {
-                throw new Exception("No existe este empleado ");
+                throw new ArgumentException("Id inválido", nameof(id));
             }
 
-
-            return _db.Employees.FirstOrDefaultAsync(e => e.Id == id, ct);
+            // Await the async EF operation directly to avoid using the DbContext after disposal
+            return await _db.Employees.FirstOrDefaultAsync(e => e.Id == id, ct);
         }
 
         public  Task<List<Employee>> GetEmployees()
@@ -47,6 +41,24 @@ namespace Belleza.Infrastructure
             }  
 
             return _db.Employees.ToListAsync();
+        }
+
+        public async Task<bool> DeleteEmployee(int id, CancellationToken ct = default)
+        {
+            if (id == 0)
+            {
+                throw new ArgumentException("Id inválido", nameof(id));
+            }
+
+            var empleado = await _db.Employees.FirstOrDefaultAsync(e => e.Id == id, ct);
+            if (empleado == null)
+            {
+                return false;
+            }
+
+            _db.Employees.Remove(empleado);
+            await _db.SaveChangesAsync(ct);
+            return true;
         }
     }
 }

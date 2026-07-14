@@ -1,7 +1,6 @@
 import { Box, Button, Card, Grid, Typography, useTheme } from "@mui/material";
 import { Header } from "./components/header/Header";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useQuery } from '@tanstack/react-query';
 
 import img1 from "../../assets/imgs/foto1.jpeg";
 import img2 from "../../assets/imgs/foto2.jpeg";
@@ -13,6 +12,7 @@ import { Galeria } from "./components/galeria/view/Galeria";
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import { useState, useEffect } from "react";
 import { Footer } from "./components/footer/view/Footer";
+import { useServices } from "./services/useservices";
 
 
 const AgendarCitas = () => {
@@ -64,24 +64,20 @@ const AgendarCitas = () => {
   ];
 
   
+  const theme = useTheme();
+  const isSmall = theme.breakpoints.down('sm');
 
-
-  const { data: employees, isLoading: employeesLoading, error: employeesError } = useQuery<Employee[], Error>({
-    queryKey: ['employees'],
-    queryFn: async () => {
-      const res = await fetch('/api/Employees');
-      if (!res.ok) throw new Error('Failed fetching employees');
-      return res.json() as Promise<Employee[]>;
-    },
-  });
-
+  const { employees, employeesLoading, employeesError, servicio, servicesLoading, servicesError } = useServices();
   const [manicuristas, setManicuristas] = useState<Employee[]>([]);
 
   useEffect(() => {
     if (employees) {
       setManicuristas(employees);
     }
-  }, [employees]);
+  }, []);
+
+console.log(servicio,"SERVICIOS");
+  
 
   const galeria = [
     {
@@ -105,7 +101,6 @@ const AgendarCitas = () => {
     setSelectedService(id);
   }
 
-  const isSmall = useTheme().breakpoints.down('sm');
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -244,7 +239,6 @@ const AgendarCitas = () => {
                 }}
               >
                 <img
-                  src={manicurista.foto}
                   width={150}
                   style={{ borderRadius: "50%" }}
                 />

@@ -5,7 +5,7 @@ interface ServicioProps {
  }
 const CardServicios = ({servicios}: ServicioProps) => {
   return (
-      <Box sx={{ bgcolor: "#fdfcf9",width: "100%", p: 4 }}>
+      <Box sx={{ bgcolor: "#fdfcf9",width: "100%", p: 4 }} id="servicios">
         <Typography
           variant="h2"
           align="center"

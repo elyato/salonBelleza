@@ -13,7 +13,7 @@ namespace Belleza.Modules.Employees.Features.CreateEmployes
             _repository = repository;
         }
 
-        public async System.Threading.Tasks.Task<Employee> HandleEmployee(int employeeId, string name)
+        public async Task<Employee> HandleEmployee(int employeeId, string name)
         {
             var employee = new Employee
             {
@@ -21,7 +21,7 @@ namespace Belleza.Modules.Employees.Features.CreateEmployes
                 Name = name
             };
 
-            await _repository.AddAsync(employee, System.Threading.CancellationToken.None);
+            await _repository.AddAsync(employee, CancellationToken.None);
             return employee;
         }
     }

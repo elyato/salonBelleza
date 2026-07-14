@@ -40,6 +40,13 @@ namespace Belleza.Controllers
             return employees;
             
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEmployee(int id)
+        {
+            var deleted = await _repo.DeleteEmployee(id, System.Threading.CancellationToken.None);
+            return deleted ? NoContent() : NotFound();
+        }
     }
 
     public class CreateEmployeeDto
@@ -48,4 +55,6 @@ namespace Belleza.Controllers
         public string LastName { get; set; } = string.Empty;
         public string? Skills { get; set; }
     }
+
+   
 }

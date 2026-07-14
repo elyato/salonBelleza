@@ -16,6 +16,11 @@ namespace Belleza.Domain
             return Task.CompletedTask;
         }
 
+        public Task<bool> DeleteEmployee(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<Employee?> GetByIdAsync(int id, CancellationToken ct = default)
         {
             _store.TryGetValue(id, out var employee);
@@ -24,6 +29,12 @@ namespace Belleza.Domain
         public Task<List<Employee>> GetEmployees()
         {
             return Task.FromResult(_store.Values.ToList());
+        }
+
+        public Task<bool> DeleteEmployee(int id, CancellationToken ct = default)
+        {
+            var removed = _store.TryRemove(id, out _);
+            return Task.FromResult(removed);
         }
     }
 }
