@@ -60,5 +60,25 @@ namespace Belleza.Infrastructure
             await _db.SaveChangesAsync(ct);
             return true;
         }
+
+        public async Task<bool> handleUpdateEmployee(Employee employee, CancellationToken ct = default)
+        {
+            if (employee == null)
+                throw new ArgumentNullException(nameof(employee));
+
+            var empleado = await _db.Employees
+                .FirstOrDefaultAsync(e => e.Id == employee.Id, ct);
+
+            if (empleado == null)
+                throw new ArgumentException("Este empleado no existe.");
+
+            empleado.Name = employee.Name;
+            empleado.LastName = employee.LastName;
+            empleado.Skills = employee.Skills;
+
+            await _db.SaveChangesAsync(ct);
+
+            return true;
+        }
     }
 }

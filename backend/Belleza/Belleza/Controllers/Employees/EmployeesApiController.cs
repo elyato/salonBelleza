@@ -47,6 +47,17 @@ namespace Belleza.Controllers
             var deleted = await _repo.DeleteEmployee(id, System.Threading.CancellationToken.None);
             return deleted ? NoContent() : NotFound();
         }
+
+
+        [HttpPost("update/{id}")]
+
+        public async Task <IActionResult> UpdateEmployee(Employee employee)
+        {
+            var update = await _repo.handleUpdateEmployee(employee);
+
+            return Ok(update);
+        }
+
     }
 
     public class CreateEmployeeDto

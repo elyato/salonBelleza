@@ -7,24 +7,28 @@
       "RelativeMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|solutionrelative:belleza\\infrastructure\\employeerepositoryef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|c:\\users\\usuario\\salonbelleza\\estudioaleja\\backend\\belleza\\belleza\\controllers\\employees\\employeesapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|solutionrelative:belleza\\controllers\\employees\\employeesapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|c:\\users\\usuario\\salonbelleza\\estudioaleja\\backend\\belleza\\belleza\\domain\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|solutionrelative:belleza\\domain\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|c:\\users\\usuario\\salonbelleza\\estudioaleja\\backend\\belleza\\belleza\\domain\\interfaces\\iupdateemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|solutionrelative:belleza\\domain\\interfaces\\iupdateemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|c:\\users\\usuario\\salonbelleza\\estudioaleja\\backend\\belleza\\belleza\\controllers\\employees\\employeesapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|solutionrelative:belleza\\controllers\\employees\\employeesapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|c:\\users\\usuario\\salonbelleza\\estudioaleja\\backend\\belleza\\belleza\\domain\\interfaces\\iemployeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|solutionrelative:belleza\\domain\\interfaces\\iemployeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|c:\\users\\usuario\\salonbelleza\\estudioaleja\\backend\\belleza\\belleza\\modules\\employees\\features\\createemployes\\createemployees.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|solutionrelative:belleza\\modules\\employees\\features\\createemployes\\createemployees.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|c:\\users\\usuario\\salonbelleza\\estudioaleja\\backend\\belleza\\belleza\\domain\\interfaces\\iquotesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|solutionrelative:belleza\\domain\\interfaces\\iquotesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|c:\\users\\usuario\\salonbelleza\\estudioaleja\\backend\\belleza\\belleza\\domain\\interfaces\\ideleteemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|solutionrelative:belleza\\domain\\interfaces\\ideleteemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|c:\\users\\usuario\\salonbelleza\\estudioaleja\\backend\\belleza\\belleza\\domain\\entities\\employees.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C01800-8B96-4CAD-9898-EAB6E7577368}|Belleza\\Belleza.csproj|solutionrelative:belleza\\domain\\entities\\employees.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,20 +38,67 @@
       "DocumentGroups": [
         {
           "DockedWidth": 400,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "IEmployeeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Domain\\Interfaces\\IEmployeeRepository.cs",
+              "RelativeDocumentMoniker": "Belleza\\Domain\\Interfaces\\IEmployeeRepository.cs",
+              "ToolTip": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Domain\\Interfaces\\IEmployeeRepository.cs",
+              "RelativeToolTip": "Belleza\\Domain\\Interfaces\\IEmployeeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T03:49:48.275Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IQuotesRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Domain\\Interfaces\\IQuotesRepository.cs",
+              "RelativeDocumentMoniker": "Belleza\\Domain\\Interfaces\\IQuotesRepository.cs",
+              "ToolTip": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Domain\\Interfaces\\IQuotesRepository.cs",
+              "RelativeToolTip": "Belleza\\Domain\\Interfaces\\IQuotesRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T03:49:43.932Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IupdateEmployee.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Domain\\Interfaces\\IupdateEmployee.cs",
+              "RelativeDocumentMoniker": "Belleza\\Domain\\Interfaces\\IupdateEmployee.cs",
+              "ToolTip": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Domain\\Interfaces\\IupdateEmployee.cs",
+              "RelativeToolTip": "Belleza\\Domain\\Interfaces\\IupdateEmployee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T03:46:31.184Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Employees.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Domain\\Entities\\Employees.cs",
+              "RelativeDocumentMoniker": "Belleza\\Domain\\Entities\\Employees.cs",
+              "ToolTip": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Domain\\Entities\\Employees.cs",
+              "RelativeToolTip": "Belleza\\Domain\\Entities\\Employees.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T03:45:35.684Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "EmployeesApiController.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Controllers\\Employees\\EmployeesApiController.cs",
               "RelativeDocumentMoniker": "Belleza\\Controllers\\Employees\\EmployeesApiController.cs",
               "ToolTip": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Controllers\\Employees\\EmployeesApiController.cs",
               "RelativeToolTip": "Belleza\\Controllers\\Employees\\EmployeesApiController.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAkwC8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAwwDkAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-14T01:55:41.764Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-14T01:55:41.764Z"
             },
             {
               "$type": "Document",
@@ -55,69 +106,24 @@
               "Title": "EmployeeRepositoryEf.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Infrastructure\\EmployeeRepositoryEf.cs",
               "RelativeDocumentMoniker": "Belleza\\Infrastructure\\EmployeeRepositoryEf.cs",
-              "ToolTip": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Infrastructure\\EmployeeRepositoryEf.cs",
-              "RelativeToolTip": "Belleza\\Infrastructure\\EmployeeRepositoryEf.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAnwDQAAAAMAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Infrastructure\\EmployeeRepositoryEf.cs*",
+              "RelativeToolTip": "Belleza\\Infrastructure\\EmployeeRepositoryEf.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-14T01:46:58.886Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "EmployeeRepository.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Domain\\EmployeeRepository.cs",
               "RelativeDocumentMoniker": "Belleza\\Domain\\EmployeeRepository.cs",
               "ToolTip": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Domain\\EmployeeRepository.cs",
               "RelativeToolTip": "Belleza\\Domain\\EmployeeRepository.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAA4wBIAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAABoAAAAAAAAAAAAgwC8AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-14T01:40:56.427Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 139,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IEmployeeRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Domain\\Interfaces\\IEmployeeRepository.cs",
-              "RelativeDocumentMoniker": "Belleza\\Domain\\Interfaces\\IEmployeeRepository.cs",
-              "ToolTip": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Domain\\Interfaces\\IEmployeeRepository.cs",
-              "RelativeToolTip": "Belleza\\Domain\\Interfaces\\IEmployeeRepository.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAA8wA0AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-09T01:44:20.872Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IDeleteEmployee.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Domain\\Interfaces\\IDeleteEmployee.cs",
-              "RelativeDocumentMoniker": "Belleza\\Domain\\Interfaces\\IDeleteEmployee.cs",
-              "ToolTip": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Domain\\Interfaces\\IDeleteEmployee.cs",
-              "RelativeToolTip": "Belleza\\Domain\\Interfaces\\IDeleteEmployee.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-09T01:50:05.986Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CreateEmployees.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Modules\\Employees\\Features\\CreateEmployes\\CreateEmployees.cs",
-              "RelativeDocumentMoniker": "Belleza\\Modules\\Employees\\Features\\CreateEmployes\\CreateEmployees.cs",
-              "ToolTip": "C:\\Users\\Usuario\\salonBelleza\\EstudioAleja\\backend\\Belleza\\Belleza\\Modules\\Employees\\Features\\CreateEmployes\\CreateEmployees.cs",
-              "RelativeToolTip": "Belleza\\Modules\\Employees\\Features\\CreateEmployes\\CreateEmployees.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAowBYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-09T01:43:44.908Z",
               "EditorCaption": ""
             }
           ]

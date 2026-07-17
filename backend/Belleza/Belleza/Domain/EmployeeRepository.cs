@@ -16,16 +16,12 @@ namespace Belleza.Domain
             return Task.CompletedTask;
         }
 
-        public Task<bool> DeleteEmployee(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<Employee?> GetByIdAsync(int id, CancellationToken ct = default)
         {
             _store.TryGetValue(id, out var employee);
             return Task.FromResult(employee);
         }
+
         public Task<List<Employee>> GetEmployees()
         {
             return Task.FromResult(_store.Values.ToList());
@@ -35,6 +31,22 @@ namespace Belleza.Domain
         {
             var removed = _store.TryRemove(id, out _);
             return Task.FromResult(removed);
+        }
+
+        public Task<bool> handleUpdateEmployee(Employee employee, CancellationToken ct = default)
+        {
+            if (employee == null)
+            {
+                throw new ArgumentNullException(nameof(employee));
+            }
+
+            if (!_store.ContainsKey(employee.Id))
+            {
+                throw new ArgumentException("Este empleado no existe");
+            }
+
+            _store[employee.Id] = employee;
+            return Task.FromResult(true);
         }
     }
 }
